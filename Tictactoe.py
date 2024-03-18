@@ -68,3 +68,14 @@ def checkIfTie(board):
         return True
     else:
         return False
+
+# Switch Player
+def switchPlayer():
+    global current_player
+    if current_player=="X":
+        current_player="0"
+    else:
+        current_player="X"
+        
+printBoard(board)
+playerInput(board)
