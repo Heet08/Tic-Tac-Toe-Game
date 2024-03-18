@@ -1,3 +1,7 @@
+board=['-','-','-','-','-','-','-','-','-']
+current_player='X'
+winner=None
+gameRunning=True
 
 import random as r
 # printing Board
