@@ -23,6 +23,48 @@ def playerInput(board):
             checkIfWin(board)
             switchPlayer()
         else:
-            print("OOPS player is already at this spot")
+            print("OOPS spot is  already filled")
 
-# 
+# Check for win and tie 
+def checkWinner(board):
+    global winner
+    
+    # horizontal
+    for i in range(0,8,3):
+        if board[i]==board[i+1]==board[i+2] and board[i]!='-':
+            winner=board[i]
+            return True
+    
+    # vertical
+    for i in range(3):
+        if board[i]==board[i+3]==board[i+6] and board[i]!='-':
+            winner=board[i]
+            return True
+            
+    # diagonal 
+    if board[0]==board[4]==board[8] and board[0]!='-':
+        winner=board[i]
+        return True
+    elif board[2]==board[4]==board[6] and board[2]!='-':
+        winner=board[i]
+        return True
+    else:
+        return False
+
+def checkIfWin(board):
+    global gameRunning
+    if checkWinner(board):
+        printBoard(board)
+        print(f"Winner is {winner} !!")
+        gameRunning=False
+    else:
+        tie=checkIfTie(board)
+        if tie:
+            gameRunning=False
+        
+def checkIfTie(board):
+    if "-" not in board:
+        print("Game tied !!")
+        return True
+    else:
+        return False
